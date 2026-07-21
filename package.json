@@ -1,0 +1,133 @@
+{
+  "name": "@igal-abachi-dev/react-ai-chat-ui",
+  "version": "0.1.0",
+  "description": "Production-grade, virtualized React chat UI for Vercel AI SDK with streaming Markdown, tool approvals, RTL support, and controlled composition.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./styles.css": "./dist/styles.css",
+    "./package.json": "./package.json",
+    "./surface": {
+      "types": "./dist/types/entries/surface.d.ts",
+      "import": "./dist/surface.js",
+      "default": "./dist/surface.js"
+    },
+    "./composer": {
+      "types": "./dist/types/entries/composer.d.ts",
+      "import": "./dist/composer.js",
+      "default": "./dist/composer.js"
+    },
+    "./messages": {
+      "types": "./dist/types/entries/messages.d.ts",
+      "import": "./dist/messages.js",
+      "default": "./dist/messages.js"
+    },
+    "./markdown": {
+      "types": "./dist/types/entries/markdown.d.ts",
+      "import": "./dist/markdown.js",
+      "default": "./dist/markdown.js"
+    },
+    "./utils": {
+      "types": "./dist/types/entries/utils.d.ts",
+      "import": "./dist/utils.js",
+      "default": "./dist/utils.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "clean": "node ./scripts/clean.mjs",
+    "build:js": "vite build",
+    "build:types": "tsc -p tsconfig.build.json --emitDeclarationOnly",
+    "build": "npm run clean && npm run build:js && npm run build:types",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run typecheck && npm run lint && npm run test && npm run build && npm run pack:check",
+    "pack:check": "node ./scripts/check-pack.mjs",
+    "prepublishOnly": "npm run check"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igal-abachi-dev/react-ai-chat-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/igal-abachi-dev/react-ai-chat-ui/issues"
+  },
+  "homepage": "https://github.com/igal-abachi-dev/react-ai-chat-ui#readme",
+  "keywords": [
+    "react",
+    "chat",
+    "ai",
+    "vercel-ai-sdk",
+    "tanstack-virtual",
+    "streaming",
+    "markdown",
+    "shadcn",
+    "tailwindcss",
+    "typescript",
+    "rtl"
+  ],
+  "author": "Igal Abachi",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "peerDependencies": {
+    "@tanstack/react-virtual": ">=3.14.7 <4",
+    "ai": ">=6.0.0 <7",
+    "react": ">=18.3.0 <20",
+    "react-dom": ">=18.3.0 <20"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^1.21.0",
+    "radix-ui": "^1.6.0",
+    "streamdown": "^2.5.0",
+    "tailwind-merge": "^3.6.0"
+  },
+  "devDependencies": {
+    "@ai-sdk/react": "^3.0.210",
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.3.1",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/node": "^24.12.3",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.3.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.6.0",
+    "jsdom": "^29.1.1",
+    "tailwindcss": "^4.3.1",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.59.2",
+    "vite": "^8.0.16",
+    "vitest": "^4.1.9"
+  },
+  "style": "./dist/styles.css"
+}
