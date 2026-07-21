@@ -378,7 +378,3 @@ Intentionally outside the core package:
 - product-specific cards and charts.
 
 Those layers belong in the application or in optional companion packages.
-
-## License
-
-MIT
