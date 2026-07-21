@@ -1,0 +1,103 @@
+@layer theme, components, utilities;
+
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+@source "./**/*.{ts,tsx}";
+@source "../node_modules/streamdown/dist/*.js";
+
+@custom-variant dark (&:is(.dark *, .raic-dark *));
+
+/*
+ * The components follow shadcn's semantic token vocabulary, but every token
+ * has a package-prefixed override and a standalone fallback. Existing shadcn
+ * applications inherit their theme automatically; other apps work immediately
+ * and may customize only the --raic-* variables they need.
+ */
+@theme inline {
+  --color-background: var(--raic-background, var(--background, oklch(1 0 0)));
+  --color-foreground: var(--raic-foreground, var(--foreground, oklch(0.145 0 0)));
+  --color-card: var(--raic-card, var(--card, oklch(1 0 0)));
+  --color-card-foreground: var(--raic-card-foreground, var(--card-foreground, oklch(0.145 0 0)));
+  --color-popover: var(--raic-popover, var(--popover, oklch(1 0 0)));
+  --color-popover-foreground: var(--raic-popover-foreground, var(--popover-foreground, oklch(0.145 0 0)));
+  --color-primary: var(--raic-primary, var(--primary, oklch(0.205 0 0)));
+  --color-primary-foreground: var(--raic-primary-foreground, var(--primary-foreground, oklch(0.985 0 0)));
+  --color-secondary: var(--raic-secondary, var(--secondary, oklch(0.97 0 0)));
+  --color-secondary-foreground: var(--raic-secondary-foreground, var(--secondary-foreground, oklch(0.205 0 0)));
+  --color-muted: var(--raic-muted, var(--muted, oklch(0.97 0 0)));
+  --color-muted-foreground: var(--raic-muted-foreground, var(--muted-foreground, oklch(0.556 0 0)));
+  --color-accent: var(--raic-accent, var(--accent, oklch(0.97 0 0)));
+  --color-accent-foreground: var(--raic-accent-foreground, var(--accent-foreground, oklch(0.205 0 0)));
+  --color-destructive: var(--raic-destructive, var(--destructive, oklch(0.577 0.245 27.325)));
+  --color-border: var(--raic-border, var(--border, oklch(0.922 0 0)));
+  --color-input: var(--raic-input, var(--input, oklch(0.922 0 0)));
+  --color-ring: var(--raic-ring, var(--ring, oklch(0.708 0 0)));
+
+  --radius-sm: calc(var(--raic-radius, var(--radius, 0.625rem)) * 0.6);
+  --radius-md: calc(var(--raic-radius, var(--radius, 0.625rem)) * 0.8);
+  --radius-lg: var(--raic-radius, var(--radius, 0.625rem));
+  --radius-xl: calc(var(--raic-radius, var(--radius, 0.625rem)) * 1.4);
+  --radius-2xl: calc(var(--raic-radius, var(--radius, 0.625rem)) * 1.8);
+  --radius-3xl: calc(var(--raic-radius, var(--radius, 0.625rem)) * 2.2);
+  --radius-4xl: calc(var(--raic-radius, var(--radius, 0.625rem)) * 2.6);
+}
+
+.raic-root,
+.raic-root *,
+.raic-root *::before,
+.raic-root *::after {
+  box-sizing: border-box;
+}
+
+.raic-root {
+  color-scheme: light;
+  font-family: var(
+    --raic-font-sans,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif
+  );
+}
+
+.raic-surface {
+  background-color: var(--raic-background, var(--background, oklch(1 0 0)));
+  background-image: radial-gradient(
+    circle at top,
+    var(--raic-muted, var(--muted, oklch(0.97 0 0))),
+    transparent 42%
+  );
+}
+
+.raic-root button,
+.raic-root input,
+.raic-root textarea,
+.raic-root select {
+  margin: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+}
+
+.raic-root button {
+  text-transform: none;
+}
+
+.raic-root button:not(:disabled) {
+  cursor: pointer;
+}
+
+.raic-root img,
+.raic-root svg {
+  display: block;
+  vertical-align: middle;
+}
+
+.dark .raic-root,
+.raic-root.raic-dark,
+.raic-dark .raic-root {
+  color-scheme: dark;
+}
